@@ -29,7 +29,6 @@ jobs:
 
     # Deployment step (example for GitHub Pages)
     - name: Deploy to GitHub Pages
-    - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: ./ # The folder the action should deploy.
