@@ -1,4 +1,6 @@
 name: Frontend CI
+permissions:
+  contents: write
 
 on:
   push:
@@ -31,5 +33,5 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
-        publish_dir: ./
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
