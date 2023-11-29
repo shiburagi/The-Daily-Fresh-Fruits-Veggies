@@ -1,4 +1,4 @@
-name: Frontend CI
+name: Node.js CI
 
 on:
   push:
@@ -8,28 +8,19 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
 
     steps:
     - uses: actions/checkout@v2
-
-    # Install dependencies
-    - name: Install Dependencies
-      run: npm install
-
-    # Optional: Add steps for linting JavaScript and CSS
-    # - name: Lint JavaScript
-    #   run: <your-js-linter-command>
-    # - name: Lint CSS
-    #   run: <your-css-linter-command>
-
-    # Optional: Add steps for any tests you might have
-    # - name: Run Tests
-    #   run: <your-test-command>
-
-    # Deployment step (example for GitHub Pages)
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
       with:
-        repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
-        publish_dir: ./
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
