@@ -17,7 +17,15 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-   
+    # Optional: Add steps for linting JavaScript and CSS
+    # - name: Lint JavaScript
+    #   run: <your-js-linter-command>
+    # - name: Lint CSS
+    #   run: <your-css-linter-command>
+
+    # Optional: Add steps for any tests you might have
+    # - name: Run Tests
+    #   run: <your-test-command>
 
     # Deployment step (example for GitHub Pages)
     - name: Deploy to GitHub Pages
